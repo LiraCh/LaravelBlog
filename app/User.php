@@ -22,10 +22,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function publications()
+    {
+        return $this->hasMany(Publication::class)->latest();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     public function isAdmin()
     {
         return $this->is_admin;
     }
-
 
 }
