@@ -14,7 +14,7 @@
                                     <a href="/publications/{{ $publication->id }}">
                                         {{ $publication->title }}
                                     </a>
-                                    by <em>{{ $publication->creator->name }}</em>
+                                    <small>by <em> {{ $publication->creator->name }}</em></small>
                                 </h4>
                                 <div class="body">{{ $publication->content }}</div>
                             </article>
