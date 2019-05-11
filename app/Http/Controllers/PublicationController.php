@@ -37,6 +37,11 @@ class PublicationController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required|max:100|',
+            'content' => 'required|max:5000'
+        ]);
+
         $publication = Publication::create(
             [
                 'user_id' => Auth::user()->id,
@@ -53,8 +58,13 @@ class PublicationController extends Controller
         return view('publications.update', compact('publication'));
     }
 
-    public function restore(Publication $publication)
+    public function restore(Request $request, Publication $publication)
     {
+        $this->validate($request,[
+            'title' => 'required|max:100|',
+            'content' => 'required|max:5000'
+        ]);
+
         DB::table('publications')
             ->where('id', $publication->id)
             ->update(['title' => request('title'), 'content' => request('content')]);

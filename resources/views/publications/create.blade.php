@@ -12,17 +12,28 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="Title">Title:</label>
-                                <input type="text" class="form-control" id="title" placeholder="title" name="title">
+                                <input type="text" class="form-control" id="title"
+                                       placeholder="title" name="title" value="{{ old('title') }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="Content">Content:</label>
-                                <textarea name="content" id="content" class="form-control">
-                                </textarea>
+                                <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
                             </div>
 
-                            <button type="submit" class="btn">Publish</button>
+                            <div class="form-group">
+                                <button type="submit" class="btn">Publish</button>
+                            </div>
+                            @if (count($errors))
+                                <ul class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
                         </form>
+
                     </div>
                 </div>
             </div>
