@@ -11,7 +11,7 @@ class Publication extends Model
     use Notifiable;
 
     protected $fillable = [
-        'user_id', 'title', 'content'
+        'user_id', 'title', 'content', 'image'
     ];
 
     public function path()
@@ -24,12 +24,6 @@ class Publication extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function userName()
-    {
-        $user = User::find($this->id)->publications;
-        $name = $user->name;
-        return $name;
-    }
 
     public function partOfText($size)
     {

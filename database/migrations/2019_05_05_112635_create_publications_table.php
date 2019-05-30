@@ -14,7 +14,7 @@ class CreatePublicationsTable extends Migration
                 $table->bigInteger('user_id')->unsigned();
                 $table->string('title');
                 $table->text('content');
-		$table->string('image')->default(NULL);
+		        $table->string('image')->nullable();
                 $table->timestamps();
 
                 $table->foreign('user_id')->references('id')->on('users');
